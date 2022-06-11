@@ -9,7 +9,7 @@ class Cam {
             1000, // far clipping plane
         );
 
-        this.camera.position.set(0, 0, 10);
+        this.camera.position.set(0, 2, 7);
     }
 
     createCamera() {
