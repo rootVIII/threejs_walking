@@ -74,13 +74,13 @@ class World {
         }
 
         if (this.pressedLeft) {
-            this.model.position.x += -(speed);
+            this.model.position.x -= speed;
             this.model.rotation.y += 0.05;
         } else if (this.pressedRight) {
             this.model.position.x += speed;
             this.model.rotation.y -= 0.05;
         } else if (this.pressedUp) {
-            this.model.position.z += -(speed);
+            this.model.position.z -= speed;
         } else if (this.pressedDown) {
             this.model.position.z += speed;
         }
