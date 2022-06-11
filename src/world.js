@@ -1,5 +1,5 @@
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import { AnimationMixer, Clock } from 'three';
+import { AnimationMixer, Clock, Vector3 } from 'three';
 import { Cam } from './camera';
 import { Control } from './controls';
 import { Lights } from './lights';
@@ -36,6 +36,8 @@ class World {
         this.pressedUp = this.pressedDown = false;
         this.pressedRight = this.pressedLeft = false;
         this.pressedShift = false;
+        this.rotationRad = (Math.PI / 180) * 4;
+        this.rotationAxis = new Vector3(0, 1, 0);
         document.addEventListener('keydown', this.pressedKey.bind(this), false);
         document.addEventListener('keyup', this.releasedKey.bind(this), false);
     }
@@ -75,10 +77,12 @@ class World {
 
         if (this.pressedLeft) {
             this.model.position.x -= speed;
-            this.model.rotation.y += 0.05;
+            // this.model.rotation.y += 0.05;
+            this.model.rotateOnAxis(this.rotationAxis, this.rotationRad);
         } else if (this.pressedRight) {
             this.model.position.x += speed;
-            this.model.rotation.y -= 0.05;
+            // this.model.rotation.y -= 0.05;
+            this.model.rotateOnAxis(this.rotationAxis, -(this.rotationRad));
         } else if (this.pressedUp) {
             this.model.position.z -= speed;
         } else if (this.pressedDown) {
