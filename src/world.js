@@ -84,9 +84,11 @@ class World {
             // this.model.rotation.y -= 0.05;
             this.model.rotateOnAxis(this.rotationAxis, -(this.rotationRad));
         } else if (this.pressedUp) {
-            this.model.position.z -= speed;
+            // this.model.position.z -= speed;
+            this.model.translateZ(-(speed));
         } else if (this.pressedDown) {
-            this.model.position.z += speed;
+            // this.model.position.z += speed;
+            this.model.translateZ(speed);
         }
     }
 
