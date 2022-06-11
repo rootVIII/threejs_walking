@@ -1,0 +1,24 @@
+{
+  "name": "threejs_discover",
+  "version": "1.0.0",
+  "description": "npm init -y npm install --save three npm install --save-dev webpack npm install --save-dev webpack-cli npm install eslint --save-dev",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack --mode development; python3 -m http.server",
+    "prod": "webpack --mode production; python3 -m http.server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "three": "^0.141.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.16.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2"
+  }
+}
