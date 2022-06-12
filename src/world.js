@@ -31,7 +31,9 @@ class World {
 
         this.mixer = null;
         this.clock = new Clock();
-        this.clips = { Run: null, Walk: null, Idle: null };
+        this.clips = {
+            Run: null, Walk: null, Idle: null, WalkBack: null, Punch: null,
+        };
         this.currentClip = 'Idle';
         this.pressedUp = this.pressedDown = false;
         this.pressedRight = this.pressedLeft = false;
@@ -44,7 +46,7 @@ class World {
 
     initModels() {
         const loaderGLTF1 = new GLTFLoader();
-        loaderGLTF1.loadAsync('../assets/Soldier.glb').then((gltf) => {
+        loaderGLTF1.loadAsync('../assets/soldierx.glb').then((gltf) => {
             this.model = gltf.scene;
             this.model.traverse((child) => {
                 if (child.isMesh) {
@@ -58,7 +60,7 @@ class World {
             this.mixer = new AnimationMixer(this.model);
 
             for (const animation of gltf.animations) {
-                if (animation.name !== 'TPose') {
+                if (animation.name !== 'mixamo.com') {
                     this.clips[animation.name] = this.mixer.clipAction(animation);
                 }
             }
@@ -70,7 +72,7 @@ class World {
 
     moveWalker() {
         let speed;
-        if (this.pressedShift) {
+        if (this.pressedShift && this.currentClip !== 'WalkBack') {
             speed = 0.1;
         } else {
             speed = 0.02;
@@ -78,23 +80,19 @@ class World {
 
         if (this.pressedLeft) {
             this.model.position.x -= speed;
-            // this.model.rotation.y += 0.05;
             this.model.rotateOnAxis(this.rotationAxis, this.rotationRad);
         } else if (this.pressedRight) {
             this.model.position.x += speed;
-            // this.model.rotation.y -= 0.05;
             this.model.rotateOnAxis(this.rotationAxis, -(this.rotationRad));
         } else if (this.pressedUp) {
-            // this.model.position.z -= speed;
             this.model.translateZ(-(speed));
         } else if (this.pressedDown) {
-            // this.model.position.z += speed;
             this.model.translateZ(speed);
         }
     }
 
     moved() {
-        return this.pressedDown || this.pressedUp || this.pressedRight || this.pressedLeft;
+        return this.pressedUp || this.pressedRight || this.pressedLeft;
     }
 
     animateWalker() {
@@ -113,6 +111,14 @@ class World {
                 this.currentClip = 'Walk';
             } else {
                 this.clips.Walk.play();
+            }
+        } else if (this.pressedDown) {
+            if (this.currentClip !== 'WalkBack') {
+                this.clips[this.currentClip].fadeOut(0.3);
+                this.clips.WalkBack.reset().fadeIn(0.3).play();
+                this.currentClip = 'WalkBack';
+            } else {
+                this.clips.WalkBack.play();
             }
         } else if (this.currentClip !== 'Idle') {
             this.clips[this.currentClip].fadeOut(0.3);
