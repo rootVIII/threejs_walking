@@ -66,4 +66,4 @@ npm run build
     </code>
 </pre>
 
-###### https://rootviii.github.io/threejs_walking/
+###### Try it: https://rootviii.github.io/threejs_walking/
