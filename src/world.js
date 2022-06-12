@@ -64,6 +64,7 @@ class World {
             }
             console.log(this.clips);
             this.model.add(this.cam);
+            this.light.target = this.model;
         });
     }
 
