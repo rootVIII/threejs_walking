@@ -56,5 +56,11 @@ npm run build
 
 - Recenter an object in Blender after scaling:
   https://blender.stackexchange.com/a/3217
+
+* The dist/ folder included in this repo has had it's paths altered
+  in order to serve the project using Github pages. Rebuild the 
+  dist/ folder if cloning and running locally!
+
+- https://rootviii.github.io/threejs_walking/
     </code>
 </pre>
