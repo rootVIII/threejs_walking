@@ -61,8 +61,9 @@ npm run build
   in order to serve the project using Github pages. Rebuild the 
   dist/ folder if cloning and running locally!
 
-- https://rootviii.github.io/threejs_walking/
-  Use directional arrows to move (hold shift to run).
+- Use directional arrows to move (hold shift to run).
   Hold 'p' while standing still to throw a haymaker.
     </code>
 </pre>
+
+###### https://rootviii.github.io/threejs_walking/
