@@ -62,5 +62,7 @@ npm run build
   dist/ folder if cloning and running locally!
 
 - https://rootviii.github.io/threejs_walking/
+  Use directional arrows to move (hold shift to run).
+  Hold 'p' while standing still to throw a haymaker.
     </code>
 </pre>
