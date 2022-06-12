@@ -43,3 +43,5 @@ npm run prod
 npm run build
     </code>
 </pre>
+
+// Easily combine Mixamo models: https://nilooy.github.io/character-animation-combiner/
