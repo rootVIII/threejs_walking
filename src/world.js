@@ -37,7 +37,7 @@ class World {
         this.currentClip = 'Idle';
         this.pressedUp = this.pressedDown = false;
         this.pressedRight = this.pressedLeft = false;
-        this.pressedShift = false;
+        this.pressedShift = this.punch = false;
         this.rotationRad = (Math.PI / 180) * 4;
         this.rotationAxis = new Vector3(0, 1, 0);
         document.addEventListener('keydown', this.pressedKey.bind(this), false);
@@ -120,6 +120,14 @@ class World {
             } else {
                 this.clips.WalkBack.play();
             }
+        } else if (this.punch) {
+            if (this.currentClip !== 'Punch') {
+                this.clips[this.currentClip].fadeOut(0.3);
+                this.clips.Punch.reset().fadeIn(0.3).play();
+                this.currentClip = 'Punch';
+            } else {
+                this.clips.Punch.play();
+            }
         } else if (this.currentClip !== 'Idle') {
             this.clips[this.currentClip].fadeOut(0.3);
             this.clips.Idle.reset().fadeIn(0.3).play();
@@ -151,6 +159,9 @@ class World {
         case 'Shift':
             this.pressedShift = true;
             break;
+        case 'p':
+            this.punch = true;
+            break;
         default:
             break;
         }
@@ -172,6 +183,9 @@ class World {
             break;
         case 'Shift':
             this.pressedShift = false;
+            break;
+        case 'p':
+            this.punch = false;
             break;
         default:
             break;
