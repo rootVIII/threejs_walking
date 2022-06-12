@@ -106,8 +106,8 @@ class World {
                     this.clips.Run.play();
                 }
             } else if (this.currentClip !== 'Walk') {
-                this.clips[this.currentClip].fadeOut(0.3);
-                this.clips.Walk.reset().fadeIn(0.3).play();
+                this.clips[this.currentClip].fadeOut(0.5);
+                this.clips.Walk.reset().fadeIn(0.5).play();
                 this.currentClip = 'Walk';
             } else {
                 this.clips.Walk.play();
