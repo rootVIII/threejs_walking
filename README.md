@@ -57,9 +57,9 @@ npm run build
 - Recenter an object in Blender after scaling:
   https://blender.stackexchange.com/a/3217
 
-* The dist/ folder included in this repo has had it's paths altered
+* The dist/ folder included in this repo has had its paths altered
   in order to serve the project using Github pages. Rebuild the 
-  dist/ folder if cloning and running locally!
+  dist/ using the above steps folder if cloning and running locally!
 
 - Use directional arrows to move (hold shift to run).
   Hold 'p' while standing still to throw a haymaker.
