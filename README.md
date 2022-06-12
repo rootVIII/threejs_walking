@@ -44,4 +44,14 @@ npm run build
     </code>
 </pre>
 
-// Easily combine Mixamo models: https://nilooy.github.io/character-animation-combiner/
+###### Other notes:
+
+<pre>
+    <code>
+- Easily combine Mixamo model animations: https://nilooy.github.io/character-animation-combiner/
+
+- Evenly scale a Mixamo model/object in Blender: https://blender.stackexchange.com/a/44738
+
+- Recenter an object in Blender after scaling: https://blender.stackexchange.com/a/3217
+    </code>
+</pre>
