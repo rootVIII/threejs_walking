@@ -1,5 +1,4 @@
 function resizer(camera, renderer) {
-    console.log('in event listener');
     // Set the camera's aspect ratio
     camera.aspect = window.innerWidth / window.innerHeight;
     // update the camera's frustum
