@@ -59,7 +59,9 @@ npm run build
 
 * The dist/ folder included in this repo has had its paths altered
   in order to serve the project using Github pages. Rebuild the 
-  dist/ using the above steps folder if cloning and running locally!
+  dist/ folder using the above steps if cloning and running locally!
+  The package.json uses python3 http server; remove this from the
+  'scripts' section if using a different web server for development.
 
 - Use directional arrows to move (hold shift to run).
   Hold 'p' while standing still to throw a haymaker.
