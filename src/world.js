@@ -91,6 +91,16 @@ class World {
         }
     }
 
+    transition(action) {
+        if (this.currentClip !== action) {
+            this.clips[this.currentClip].fadeOut(0.4);
+            this.clips[action].reset().fadeIn(0.4).play();
+            this.currentClip = action;
+        } else {
+            this.clips[action].play();
+        }
+    }
+
     moved() {
         return this.pressedUp || this.pressedRight || this.pressedLeft;
     }
@@ -98,42 +108,16 @@ class World {
     animateWalker() {
         if (this.moved()) {
             if (this.pressedShift) {
-                if (this.currentClip !== 'Run') {
-                    this.clips[this.currentClip].fadeOut(0.3);
-                    this.clips.Run.reset().fadeIn(0.3).play();
-                    this.currentClip = 'Run';
-                } else {
-                    this.clips.Run.play();
-                }
-            } else if (this.currentClip !== 'Walk') {
-                this.clips[this.currentClip].fadeOut(0.5);
-                this.clips.Walk.reset().fadeIn(0.5).play();
-                this.currentClip = 'Walk';
+                this.transition('Run');
             } else {
-                this.clips.Walk.play();
+                this.transition('Walk');
             }
         } else if (this.pressedDown) {
-            if (this.currentClip !== 'WalkBack') {
-                this.clips[this.currentClip].fadeOut(0.3);
-                this.clips.WalkBack.reset().fadeIn(0.3).play();
-                this.currentClip = 'WalkBack';
-            } else {
-                this.clips.WalkBack.play();
-            }
+            this.transition('WalkBack');
         } else if (this.punch) {
-            if (this.currentClip !== 'Punch') {
-                this.clips[this.currentClip].fadeOut(0.3);
-                this.clips.Punch.reset().fadeIn(0.3).play();
-                this.currentClip = 'Punch';
-            } else {
-                this.clips.Punch.play();
-            }
-        } else if (this.currentClip !== 'Idle') {
-            this.clips[this.currentClip].fadeOut(0.3);
-            this.clips.Idle.reset().fadeIn(0.3).play();
-            this.currentClip = 'Idle';
+            this.transition('Punch');
         } else {
-            this.clips.Idle.play();
+            this.transition('Idle');
         }
 
         this.mixer.update(this.clock.getDelta());
