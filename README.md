@@ -36,6 +36,9 @@ npm run prd ; python -m http.server
 
 <pre>
     <code>
+- Use directional arrows to move (hold shift to run).
+  Hold 'p' while standing still to throw a haymaker.
+
 - Easily combine Mixamo model animations:
   https://nilooy.github.io/character-animation-combiner/
 
@@ -53,8 +56,5 @@ npm run prd ; python -m http.server
   Github Pages requires paths to start from project root such as
   assets/filename.glb. Only use update_paths.sh if deploying to
   Github Pages.
-
-- Use directional arrows to move (hold shift to run).
-  Hold 'p' while standing still to throw a haymaker.
     </code>
 </pre>
