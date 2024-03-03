@@ -1,6 +1,6 @@
 import { Color, Scene } from 'three';
 
-class Scenario {
+class GameScene {
     constructor() {
         this.scene = new Scene();
         this.scene.background = new Color('skyblue');
@@ -11,4 +11,4 @@ class Scenario {
     }
 }
 
-export { Scenario };
+export { GameScene };
