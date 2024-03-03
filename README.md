@@ -25,7 +25,7 @@ npm run dev ; python -m http.server
     </code>
 </pre>
 
-###### Build Webpack PROD dist/main.js and run from project root
+###### Build Webpack PRD dist/main.js and run from project root
 <pre>
     <code>
 npm run prd ; python -m http.server
