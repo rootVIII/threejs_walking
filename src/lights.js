@@ -16,7 +16,7 @@ class Lights {
         return this.ambientLight;
     }
 
-    createLight() {
+    createDirectionalLight() {
         return this.directionalLight;
     }
 }

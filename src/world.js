@@ -2,10 +2,10 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { AnimationMixer, Clock, Vector3 } from 'three';
 import { Cam } from './camera';
 import { Control } from './controls';
+import { GameScene } from './scene';
 import { Lights } from './lights';
 import { Renderer } from './renderer';
 import { resizer } from './resizer';
-import { GameScene } from './scene';
 
 class World {
     constructor() {
@@ -13,10 +13,10 @@ class World {
         this.gameScene = new GameScene('../assets/skybox-blue-sky/').createScene();
         this.webRenderer = new Renderer().createRenderer();
         const lights = new Lights();
-        this.light = lights.createLight();
-        this.ambienceLight = lights.createAmbientLight();
+        this.dirLight = lights.createDirectionalLight();
+        this.ambientLight = lights.createAmbientLight();
 
-        this.gameScene.add(this.light, this.ambienceLight);
+        this.gameScene.add(this.dirLight, this.ambientLight);
         this.soldier = null;
 
         document.getElementById('scene-container').append(this.webRenderer.domElement);
@@ -80,7 +80,7 @@ class World {
             }
             // console.log(this.clips);
             this.soldier.add(this.cam);
-            this.light.target = this.soldier;
+            this.dirLight.target = this.soldier;
         });
     }
 
