@@ -1,6 +1,6 @@
 ##### Try it: https://rootviii.github.io/threejs_walking/
 
-###### Steps used when project was initially created (else just install using existing package.json):
+###### Node modules used:
 <pre>
     <code>
 npm init -y
