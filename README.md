@@ -1,3 +1,5 @@
+##### Try it: https://rootviii.github.io/threejs_walking/
+
 ###### Steps used when project was initially created (else just install using existing package.json):
 <pre>
     <code>
@@ -62,5 +64,3 @@ npm run prd ; python -m http.server
   Hold 'p' while standing still to throw a haymaker.
     </code>
 </pre>
-
-###### Try it: https://rootviii.github.io/threejs_walking/
