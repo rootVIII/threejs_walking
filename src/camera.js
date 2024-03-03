@@ -5,11 +5,11 @@ class Cam {
         this.camera = new PerspectiveCamera(
             45, // fov = Field Of View
             window.innerWidth / window.innerHeight, // aspect ratio
-            0.1, // near clipping plane
+            0.01, // near clipping plane
             1000, // far clipping plane
         );
 
-        this.camera.position.set(0, 2, 7);
+        this.camera.position.set(0, 2.5, 4.0);
     }
 
     createCamera() {

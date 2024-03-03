@@ -80,6 +80,7 @@ class World {
             }
             // console.log(this.clips);
             this.soldier.add(this.cam);
+            this.cam.lookAt(new Vector3(0, 1.0, 0));
             this.dirLight.target = this.soldier;
         });
     }
