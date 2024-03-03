@@ -17,7 +17,7 @@ class World {
         this.ambienceLight = lights.createAmbientLight();
 
         this.newScene.add(this.light, this.ambienceLight);
-        this.model = null;
+        this.soldier = null;
 
         document.getElementById('scene-container').append(this.webRenderer.domElement);
         this.controller = new Control(this.cam, this.webRenderer.domElement).createControl();
@@ -54,23 +54,24 @@ class World {
                 }
             });
             level.rotateX(-Math.PI);
-            level.position.set(0, 0, 0);
+            level.position.set(0, 0.2, 0);
             level.scale.set(0.04, 0.04, 0.04);
             this.newScene.add(level);
         });
 
         loaderGLTF1.loadAsync('../assets/soldierx.glb').then((gltfSoldier) => {
-            this.model = gltfSoldier.scene;
-            this.model.traverse((child) => {
+            this.soldier = gltfSoldier.scene;
+            this.soldier.traverse((child) => {
                 if (child.isMesh) {
                     child.castShadow = true;
                 }
             });
-            this.newScene.add(this.model);
+            this.soldier.position.set(0, 0, 0);
+            this.newScene.add(this.soldier);
 
             // console.log(gltf.animations);
 
-            this.mixer = new AnimationMixer(this.model);
+            this.mixer = new AnimationMixer(this.soldier);
 
             for (const animation of gltfSoldier.animations) {
                 if (animation.name !== 'mixamo.com') {
@@ -78,8 +79,8 @@ class World {
                 }
             }
             console.log(this.clips);
-            this.model.add(this.cam);
-            this.light.target = this.model;
+            this.soldier.add(this.cam);
+            this.light.target = this.soldier;
         });
     }
 
@@ -92,15 +93,15 @@ class World {
         }
 
         if (this.pressedLeft) {
-            this.model.position.x -= speed;
-            this.model.rotateOnAxis(this.rotationAxis, this.rotationRad);
+            this.soldier.position.x -= speed;
+            this.soldier.rotateOnAxis(this.rotationAxis, this.rotationRad);
         } else if (this.pressedRight) {
-            this.model.position.x += speed;
-            this.model.rotateOnAxis(this.rotationAxis, -(this.rotationRad));
+            this.soldier.position.x += speed;
+            this.soldier.rotateOnAxis(this.rotationAxis, -(this.rotationRad));
         } else if (this.pressedUp) {
-            this.model.translateZ(-(speed));
+            this.soldier.translateZ(-(speed));
         } else if (this.pressedDown) {
-            this.model.translateZ(speed);
+            this.soldier.translateZ(speed);
         }
     }
 
