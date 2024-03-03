@@ -51,11 +51,11 @@ npm run prd ; python -m http.server
   https://blender.stackexchange.com/a/3217
 
 * The dist/ folder included in this repo has had its paths altered
-  for all .glb and .png files using the included update_paths.sh
-  shell script in order to serve the project using Github Pages. 
-  The normal webpack build (which runs locally) will use paths
-  similar to ../assets/filename.ext; Github Pages requires paths
-  to start from project root such as assets/filename.ext. Only
+  for all .glb files using the included update_paths.sh script in
+  order to serve the project using Github Pages. The normal webpack
+  build that runs locally will use paths pointing to the parent
+  directory, similar to ../assets/filename.glb. Github Pages requires
+  paths to start from project root such as assets/filename.ext. Only
   use update_paths.sh if deploying to Github Pages.
 
 - Use directional arrows to move (hold shift to run).
