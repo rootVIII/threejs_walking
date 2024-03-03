@@ -18,13 +18,6 @@ node node_modules/eslint/bin/eslint.js --init
     </code>
 </pre>
 
-###### Check script src in index.html is set to the dist/main.js Webpack build:
-<pre>
-    <code>
-&ltscript src="./dist/main.js"&gt; &lt;/script&gt;
-    </code>
-</pre>
-
 ###### Build Webpack DEV dist/main.js and run from project root
 <pre>
     <code>
