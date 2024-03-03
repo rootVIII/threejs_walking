@@ -1,10 +1,10 @@
 import {
-    PlaneBufferGeometry, TextureLoader, Mesh, MeshStandardMaterial, DoubleSide,
+    BufferGeometry, TextureLoader, Mesh, MeshStandardMaterial, DoubleSide,
 } from 'three';
 
 class Plane {
     constructor() {
-        const geometry = new PlaneBufferGeometry(2000, 2000, 8, 8);
+        const geometry = new BufferGeometry(2000, 2000, 8, 8);
         const textureLoader = new TextureLoader();
         const texture1 = textureLoader.load('../assets/sand.png');
         const texture2 = textureLoader.load('../assets/bumps.png');
