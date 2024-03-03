@@ -78,7 +78,7 @@ class World {
                     this.clips[animation.name] = this.mixer.clipAction(animation);
                 }
             }
-            console.log(this.clips);
+            // console.log(this.clips);
             this.soldier.add(this.cam);
             this.light.target = this.soldier;
         });
