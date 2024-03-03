@@ -10,13 +10,13 @@ import { GameScene } from './scene';
 class World {
     constructor() {
         this.cam = new Cam().createCamera();
-        this.newScene = new GameScene().createScene();
+        this.gameScene = new GameScene('../assets/skybox-blue-sky/').createScene();
         this.webRenderer = new Renderer().createRenderer();
         const lights = new Lights();
         this.light = lights.createLight();
         this.ambienceLight = lights.createAmbientLight();
 
-        this.newScene.add(this.light, this.ambienceLight);
+        this.gameScene.add(this.light, this.ambienceLight);
         this.soldier = null;
 
         document.getElementById('scene-container').append(this.webRenderer.domElement);
@@ -56,7 +56,7 @@ class World {
             level.rotateX(-Math.PI);
             level.position.set(0, 0.2, 0);
             level.scale.set(0.03, 0.03, 0.03);
-            this.newScene.add(level);
+            this.gameScene.add(level);
         });
 
         loaderGLTF1.loadAsync('../assets/soldierx.glb').then((gltfSoldier) => {
@@ -67,7 +67,7 @@ class World {
                 }
             });
             this.soldier.position.set(0, 0, 0);
-            this.newScene.add(this.soldier);
+            this.gameScene.add(this.soldier);
 
             // console.log(gltf.animations);
 
@@ -197,7 +197,7 @@ class World {
                 this.movePlayer();
             }
 
-            this.webRenderer.render(this.newScene, this.cam);
+            this.webRenderer.render(this.gameScene, this.cam);
         });
     }
 }
