@@ -55,7 +55,7 @@ class World {
             });
             level.rotateX(-Math.PI);
             level.position.set(0, 0.2, 0);
-            level.scale.set(0.04, 0.04, 0.04);
+            level.scale.set(0.03, 0.03, 0.03);
             this.newScene.add(level);
         });
 
