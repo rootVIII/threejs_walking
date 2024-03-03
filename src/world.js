@@ -3,21 +3,20 @@ import { AnimationMixer, Clock, Vector3 } from 'three';
 import { Cam } from './camera';
 import { Control } from './controls';
 import { Lights } from './lights';
-import { Plane } from './plane';
 import { Renderer } from './renderer';
 import { resizer } from './resizer';
-import { Scenario } from './scene';
+import { GameScene } from './scene';
 
 class World {
     constructor() {
         this.cam = new Cam().createCamera();
-        this.newScene = new Scenario().createScene();
+        this.newScene = new GameScene().createScene();
         this.webRenderer = new Renderer().createRenderer();
         const lights = new Lights();
         this.light = lights.createLight();
         this.ambienceLight = lights.createAmbientLight();
-        this.floor = new Plane().createPlane();
-        this.newScene.add(this.floor, this.light, this.ambienceLight);
+
+        this.newScene.add(this.light, this.ambienceLight);
         this.model = null;
 
         document.getElementById('scene-container').append(this.webRenderer.domElement);
@@ -46,8 +45,22 @@ class World {
 
     initModels() {
         const loaderGLTF1 = new GLTFLoader();
-        loaderGLTF1.loadAsync('../assets/soldierx.glb').then((gltf) => {
-            this.model = gltf.scene;
+
+        loaderGLTF1.loadAsync('../assets/wet-intersection.glb').then((gltfLevel) => {
+            const level = gltfLevel.scene;
+            level.traverse((child) => {
+                if (child.isMesh) {
+                    child.receiveShadow = true;
+                }
+            });
+            level.rotateX(-Math.PI);
+            level.position.set(0, 0, 0);
+            level.scale.set(0.04, 0.04, 0.04);
+            this.newScene.add(level);
+        });
+
+        loaderGLTF1.loadAsync('../assets/soldierx.glb').then((gltfSoldier) => {
+            this.model = gltfSoldier.scene;
             this.model.traverse((child) => {
                 if (child.isMesh) {
                     child.castShadow = true;
@@ -59,7 +72,7 @@ class World {
 
             this.mixer = new AnimationMixer(this.model);
 
-            for (const animation of gltf.animations) {
+            for (const animation of gltfSoldier.animations) {
                 if (animation.name !== 'mixamo.com') {
                     this.clips[animation.name] = this.mixer.clipAction(animation);
                 }
@@ -70,7 +83,7 @@ class World {
         });
     }
 
-    moveWalker() {
+    movePlayer() {
         let speed;
         if (this.pressedShift && this.currentClip !== 'WalkBack') {
             speed = 0.1;
@@ -105,7 +118,7 @@ class World {
         return this.pressedUp || this.pressedRight || this.pressedLeft;
     }
 
-    animateWalker() {
+    animatePlayer() {
         if (this.moved()) {
             if (this.pressedShift) {
                 this.transition('Run');
@@ -179,8 +192,8 @@ class World {
     update() {
         this.webRenderer.setAnimationLoop(() => {
             if (this.clips.Idle) {
-                this.animateWalker();
-                this.moveWalker();
+                this.animatePlayer();
+                this.movePlayer();
             }
 
             this.webRenderer.render(this.newScene, this.cam);
