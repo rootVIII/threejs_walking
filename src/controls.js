@@ -8,6 +8,10 @@ class Control {
         this.controls.maxDistance = 15;
         this.controls.enablePan = false;
         this.controls.maxPolarAngle = (Math.PI / 2) - 0.05;
+        this.controls.mouseButtons = {
+            LEFT: '', MIDDLE: '', RIGHT: '',
+        };
+        this.controls.enableZoom = false;
     }
 
     createControl() {
