@@ -1,26 +1,20 @@
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { AnimationMixer, Clock, Vector3 } from 'three';
-import { Cam } from './camera';
-import { Control } from './controls';
-import { GameScene } from './scene';
-import { Lights } from './lights';
-import { Renderer } from './renderer';
 import { resizer } from './resizer';
 
-class World {
-    constructor() {
-        this.cam = new Cam().createCamera();
-        this.gameScene = new GameScene('../assets/skybox-blue-sky/').createScene();
-        this.webRenderer = new Renderer().createRenderer();
-        const lights = new Lights();
-        this.dirLight = lights.createDirectionalLight();
-        this.ambientLight = lights.createAmbientLight();
-
+class World1 {
+    constructor(cam, gameScene, webRenderer, dirLight, ambientLight, controller) {
+        this.cam = cam;
+        this.gameScene = gameScene;
+        this.webRenderer = webRenderer;
+        this.dirLight = dirLight;
+        this.ambientLight = ambientLight;
+        this.controller = controller;
         this.gameScene.add(this.dirLight, this.ambientLight);
         this.soldier = null;
 
         document.getElementById('scene-container').append(this.webRenderer.domElement);
-        this.controller = new Control(this.cam, this.webRenderer.domElement).createControl();
+
         this.controller.update();
 
         resizer(this.cam, this.webRenderer);
@@ -203,4 +197,4 @@ class World {
     }
 }
 
-export { World };
+export { World1 };
